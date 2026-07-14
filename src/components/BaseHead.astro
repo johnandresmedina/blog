@@ -3,7 +3,6 @@ import { ClientRouter } from 'astro:transitions';
 import { Font } from 'astro:assets';
 import { SITE } from '@/site.config';
 import { withBase } from '@/utils/url';
-import Analytics from '@vercel/analytics/astro'; // optional, remove if not using Vercel Analytics
 
 interface Props {
   title: string;
@@ -80,9 +79,6 @@ const socialImage = new URL(withBase(image || '/og-image.png'), Astro.site);
     document.documentElement.classList.toggle('dark', theme === 'dark');
   });
 </script>
-
-{/* optional, remove if not using Vercel Analytics */}
-<Analytics />
 
 {/* View Transition API */}
 <ClientRouter />
