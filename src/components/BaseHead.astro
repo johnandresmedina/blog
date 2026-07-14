@@ -3,8 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import { Font } from 'astro:assets';
 import { SITE } from '@/site.config';
 import { withBase } from '@/utils/url';
-import Analytics from '@vercel/analytics/astro'   // optional, remove if not using Vercel Analytics
-
+import Analytics from '@vercel/analytics/astro'; // optional, remove if not using Vercel Analytics
 
 interface Props {
   title: string;
@@ -14,9 +13,7 @@ interface Props {
 
 const { title: pageTitle, description: pageDescription, image } = Astro.props;
 
-const fullTitle = pageTitle.includes(SITE.name)
-  ? pageTitle
-  : `${pageTitle} · ${SITE.name}`;
+const fullTitle = pageTitle.includes(SITE.name) ? pageTitle : `${pageTitle} · ${SITE.name}`;
 const description = pageDescription || SITE.description;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(withBase(image || '/og-image.png'), Astro.site);
@@ -53,18 +50,9 @@ const socialImage = new URL(withBase(image || '/og-image.png'), Astro.site);
 <meta name="twitter:image" content={socialImage} />
 
 {/* Favicons */}
-<link
-  rel="icon"
-  type="image/png"
-  href={withBase('/favicons/favicon-96x96.png')}
-  sizes="96x96"
-/>
+<link rel="icon" type="image/png" href={withBase('/favicons/favicon-96x96.png')} sizes="96x96" />
 <link rel="shortcut icon" href={withBase('/favicons/favicon.ico')} />
-<link
-  rel="apple-touch-icon"
-  sizes="180x180"
-  href={withBase('/favicons/apple-touch-icon.png')}
-/>
+<link rel="apple-touch-icon" sizes="180x180" href={withBase('/favicons/apple-touch-icon.png')} />
 
 {/* Optional */}
 <meta name="robots" content="index, follow" />
@@ -76,24 +64,25 @@ const socialImage = new URL(withBase(image || '/og-image.png'), Astro.site);
 
 {/* Theme Toggle Script */}
 <script is:inline>
-    // Runs before first paint to avoid a flash of the wrong theme.
-    // Kept in sync by ThemeToggle.astro and re-applied after every
-    // view-transition navigation below.
-    (function () {
+  // Runs before first paint to avoid a flash of the wrong theme.
+  // Kept in sync by ThemeToggle.astro and re-applied after every
+  // view-transition navigation below.
+  (function () {
     const stored = localStorage.getItem('theme');
     const theme =
-        stored ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      stored ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.classList.toggle('dark', theme === 'dark');
-    })();
-    document.addEventListener('astro:after-swap', () => {
-        const stored = localStorage.getItem('theme');
-        const theme = stored ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.classList.toggle('dark', theme === 'dark');
-    });
+  })();
+  document.addEventListener('astro:after-swap', () => {
+    const stored = localStorage.getItem('theme');
+    const theme =
+      stored ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  });
 </script>
 
 {/* optional, remove if not using Vercel Analytics */}
-<Analytics />  
+<Analytics />
 
 {/* View Transition API */}
 <ClientRouter />

@@ -1,17 +1,17 @@
 // @ts-check
-import { defineConfig, fontProviders } from "astro/config";
-import sitemap from "@astrojs/sitemap";
-import tailwindcss from "@tailwindcss/vite";
+import { defineConfig, fontProviders } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 
 // Replace with your production URL after deploying to Vercel / Netlify.
 // It powers the sitemap and the canonical / Open Graph URLs in BaseLayout.
-const SITE_URL = "https://johnandresmedina.github.io";
+const SITE_URL = 'https://johnandresmedina.github.io';
 
 export default defineConfig({
   site: SITE_URL,
   // GitHub Pages project sites (repo not named <user>.github.io) are served
   // under a subpath — this must match the repository name.
-  base: "/blog",
+  base: '/blog',
   integrations: [sitemap()],
   // Prefetches internal links on hover/viewport entry for near-instant navigation.
   prefetch: true,
@@ -23,25 +23,25 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
-      name: "Fraunces",
-      cssVariable: "--ff-display",
-      weights: ["400", "500", "600"],
-      styles: ["normal", "italic"],
-      subsets: ["latin"],
+      name: 'Fraunces',
+      cssVariable: '--ff-display',
+      weights: ['400', '500', '600'],
+      styles: ['normal', 'italic'],
+      subsets: ['latin'],
     },
     {
       provider: fontProviders.google(),
-      name: "Inter",
-      cssVariable: "--ff-body",
-      weights: ["400", "500", "600"],
-      subsets: ["latin"],
+      name: 'Inter',
+      cssVariable: '--ff-body',
+      weights: ['400', '500', '600'],
+      subsets: ['latin'],
     },
     {
       provider: fontProviders.google(),
-      name: "Space Mono",
-      cssVariable: "--ff-mono",
-      weights: ["400", "700"],
-      subsets: ["latin"],
+      name: 'Space Mono',
+      cssVariable: '--ff-mono',
+      weights: ['400', '700'],
+      subsets: ['latin'],
     },
   ],
 });
