@@ -21,13 +21,39 @@ const selected = [...featured, ...rest].slice(0, 5);
       {SITE.status}
     </p>
 
-    <h1 class="font-display text-ink max-w-2xl text-4xl leading-[1.1] font-medium sm:text-5xl">
-      {SITE.tagline}
+    <h1 class="font-display text-ink max-w-xl text-3xl font-medium sm:text-4xl">
+      {SITE.role}.
     </h1>
 
-    <p class="text-ink-soft mt-6 max-w-md">
-      {SITE.role} — based on the work below, not a list of buzzwords.
-    </p>
+    <div class="prose prose-sm sm:prose-base mt-8 max-w-xl">
+      <p>
+        I start most projects by trying to find the smallest version of the problem — the one
+        screen, one flow, or one fix that actually matters — and build that first, properly, before
+        expanding outward.
+      </p>
+      <p>
+        That usually means fewer features than a kickoff deck promises, and more attention to the
+        parts people interact with constantly: load times, empty states, error messages, the things
+        that quietly decide whether software feels good to use.
+      </p>
+      <p>
+        Outside of client and product work, I maintain a couple of small open-source tools and write
+        occasional notes on what I learn building them.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <p class="text-ink-soft mb-3 font-mono text-xs tracking-[0.2em] uppercase">Tools</p>
+      <ul class="flex flex-wrap gap-2">
+        {
+          SITE.tools.map((tool) => (
+            <li class="border-line text-ink-soft rounded-full border px-3 py-1 font-mono text-xs">
+              {tool}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
 
     <div class="mt-8 flex flex-wrap items-center gap-3">
       <Button href={withBase('/work')} variant="solid">View the work →</Button>
@@ -52,19 +78,6 @@ const selected = [...featured, ...rest].slice(0, 5);
         </div>
       )
     }
-  </section>
-
-  <section id="about" class="mx-auto max-w-3xl px-6 pb-20">
-    <SectionHeading eyebrow="About" />
-    <p class="text-ink-soft max-w-xl">
-      {SITE.description}
-    </p>
-    <a
-      href={withBase('/about')}
-      class="text-signal mt-4 inline-block font-mono text-xs hover:underline"
-    >
-      More about how I work →
-    </a>
   </section>
 
   <section id="contact" class="mx-auto max-w-3xl px-6 pb-24">

@@ -2,12 +2,13 @@
 // and SEO defaults all read from here instead of hardcoding copy.
 export const SITE = {
   name: "John Medina's blog",
-  role: 'Product design & frontend engineering',
+  role: 'Senior Frontend Software Engineer',
   email: 'johndoe@example.com',
   tagline: 'I design and build interfaces that hold up under real use.',
   description:
     'Portfolio of John Medina — product design and frontend engineering, with an emphasis on speed, clarity, and the details most people skip.',
   status: 'Currently building at Studio Co · Open to new work',
+  tools: ['React', 'TypeScript', 'Tanstack Query', 'Tailwind CSS', 'Node.js', 'Astro'],
   social: [
     { label: 'GitHub', href: 'https://github.com/johnandresmedina' },
     {
@@ -18,7 +19,4 @@ export const SITE = {
   locale: 'en',
 } as const;
 
-export const NAV_LINKS = [
-  { label: 'Work', href: '/work' },
-  { label: 'About', href: '/about' },
-] as const;
+export const NAV_LINKS = [{ label: 'Work', href: '/work' }] as const;
